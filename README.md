@@ -32,9 +32,9 @@ BlueCoLab Water Monitor is an Android application that provides real-time access
 
 ## Screenshots
 
-| Main Dashboard | Sensor Details | Data View |
-|---------------|---------------|-----------|
-| ![Screenshot 1](Screen_Shot_2021-12-10_at_1.41.13_PM.png) | ![Screenshot 2](Screen_Shot_2021-12-10_at_1.41.20_PM.png) | *Coming soon* |
+| Main Dashboard | App Running | Data View |
+|---------------|-------------|-----------|
+| ![Screenshot 1](Screen_Shot_2021-12-10_at_1.41.13_PM.png) | ![App Running](app-running.png) | *Coming soon* |
 
 ---
 

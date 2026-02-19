@@ -353,9 +353,8 @@ temp/
 # =========================================
 
 # Add any project-specific files to ignore below
-# Example:
-# /custom-config/
-# /temp-data/
+CLAUDE_CODE_INSTRUCTIONS.md
+.claude/
 
 # =========================================
 # EXCEPTIONS (Force include certain files)
