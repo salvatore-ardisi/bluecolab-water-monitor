@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Blue CoLab</string>
+    <string name="app_description">Water Quality Monitor</string>
+
+    <!-- Location -->
+    <string name="location_choate_pond">Choate Pond</string>
+    <string name="location_pleasantville">Pleasantville, NY</string>
+
+    <!-- Water Quality Status -->
+    <string name="status_excellent">Excellent</string>
+    <string name="status_good">Good</string>
+    <string name="status_fair">Fair</string>
+    <string name="status_poor">Poor</string>
+    <string name="status_unknown">Unknown</string>
+    <string name="water_quality_is">Water Quality is</string>
+
+    <!-- Sensor Metrics -->
+    <string name="metric_temperature">Temperature</string>
+    <string name="metric_ph">pH</string>
+    <string name="metric_dissolved_oxygen">Dissolved O₂</string>
+    <string name="metric_turbidity">Turbidity</string>
+    <string name="metric_conductivity">Conductivity</string>
+    <string name="metric_salinity">Salinity</string>
+
+    <!-- Units -->
+    <string name="unit_celsius">°C</string>
+    <string name="unit_fahrenheit">°F</string>
+    <string name="unit_percent">%</string>
+    <string name="unit_ntu">NTU</string>
+    <string name="unit_microsiemens">μS/cm</string>
+    <string name="unit_ppt">ppt</string>
+
+    <!-- Actions -->
+    <string name="action_refresh">Refresh</string>
+    <string name="action_about">About Blue CoLab</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Messages -->
+    <string name="loading_data">Loading water quality data…</string>
+    <string name="error_network">Unable to connect. Please check your internet connection.</string>
+    <string name="error_generic">Something went wrong. Please try again.</string>
+    <string name="last_updated">Last updated: %1$s</string>
+
+    <!-- Content Descriptions -->
+    <string name="cd_location_icon">Location</string>
+    <string name="cd_refresh_button">Refresh data</string>
+    <string name="cd_about_button">About Blue CoLab</string>
+    <string name="cd_water_drop">Water drop icon</string>
+</resources>
