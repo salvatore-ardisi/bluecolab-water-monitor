@@ -1,6 +1,8 @@
 # BlueCoLab Water Monitor
 
-![BlueCoLab Banner](Blue_CoLab_circle_on_blue_600_copy.png)
+<p align="center">
+  <img src="assets/bluecolab-logo.png" alt="BlueCoLab Logo" width="150">
+</p>
 
 [![Android](https://img.shields.io/badge/Platform-Android-green.svg)](https://android.com)
 [![Kotlin](https://img.shields.io/badge/Language-Kotlin-purple.svg)](https://kotlinlang.org/)
@@ -32,9 +34,11 @@ BlueCoLab Water Monitor is an Android application that provides real-time access
 
 ## Screenshots
 
-| Main Dashboard | App Running | Data View |
-|---------------|-------------|-----------|
-| ![Screenshot 1](Screen_Shot_2021-12-10_at_1.41.13_PM.png) | ![App Running](app-running.png) | *Coming soon* |
+<p align="center">
+  <img src="assets/screenshot-dashboard.png" alt="Dashboard" width="250">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="assets/screenshot-app-running.png" alt="App Running" width="250">
+</p>
 
 ---
 
