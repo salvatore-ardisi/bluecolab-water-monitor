@@ -15,29 +15,31 @@
 
 ## Overview
 
-BlueCoLab Water Monitor is an Android application that provides real-time access to water level data from monitoring sensors. Originally developed to track water quality metrics from the BCL (Blue Collaborative Lab) sensor network, this app delivers instant visibility into environmental water conditions.
+BlueCoLab Water Monitor is a native Android app that combines real-time water quality monitoring from the BCL sensor network with USGS flood awareness data. It provides live water quality readings from Choate Pond and integrates two public USGS APIs to display real-time gage height, streamflow, and flood impact status for nearby USGS streamgages.
 
-**Key Purpose**: Enable communities to monitor local water levels for flood awareness, environmental research, and public safety.
+**Key Purpose**: Enable communities to monitor local water quality and flood conditions for environmental awareness and public safety.
 
 ---
 
 ## Features
 
-- **Real-Time Data** - Live water level readings from sensor network
-- **Multiple Sensors** - Monitor different sensor locations
-- **Visual Display** - Clean UI showing current water levels
-- **Auto-Refresh** - Continuous data updates
-- **Native Android** - Built with Kotlin for optimal performance
-- **Material Design** - Modern, intuitive interface
+- **Real-Time Water Quality** - Live readings from the BCL sensor network (pH, temperature, dissolved oxygen, turbidity, conductivity, salinity)
+- **Flood Awareness** - Real-time gage height and streamflow from USGS Instantaneous Values API, plus flood impact status from the USGS RTFI API
+- **Color-Coded Flood Status** - Green (normal), yellow (elevated), red (flooding) indicators for each stream gage
+- **Search by State or Location** - Find USGS stream gages by state code or proximity to coordinates
+- **Bottom Navigation** - Switch between Water Quality and Flood Awareness screens
+- **Material Design 3** - Modern, intuitive interface with light/dark theme support
 
 ---
 
 ## Screenshots
 
 <p align="center">
-  <img src="assets/screenshot-dashboard.png" alt="Dashboard" width="250">
+  <img src="assets/screenshot-water-quality.png" alt="Water Quality" width="250">
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="assets/screenshot-app-running.png" alt="App Running" width="250">
+  <img src="assets/screenshot-flood-awareness.png" alt="Flood Awareness" width="250">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="assets/screenshot-nearby-search.png" alt="Nearby Search" width="250">
 </p>
 
 ---
@@ -147,13 +149,16 @@ The following features are planned for future releases:
 
 ## API
 
-This app connects to water monitoring sensors that provide real-time data. The API is read-only and requires no authentication.
+This app connects to multiple public APIs, all read-only and requiring no authentication:
 
-**Data Format**: JSON  
-**Update Frequency**: Real-time (varies by sensor)  
-**Coverage**: Multiple sensor locations
+| API | Purpose | Base URL |
+|-----|---------|----------|
+| BCL Sensor API | Water quality readings | `colabprod01.pace.edu/api/influx/sensordata/` |
+| USGS Instantaneous Values | Gage height & streamflow | `waterservices.usgs.gov/nwis/iv/` |
+| USGS RTFI | Flood impact status | `api.waterdata.usgs.gov/rtfi-api/` |
 
-**Note**: API endpoints are configured for the BCL sensor network. The app can be adapted to work with other water monitoring APIs by modifying the network layer.
+**Data Format**: JSON
+**Update Frequency**: Real-time (varies by source)
 
 ---
 
@@ -165,27 +170,38 @@ app/src/main/java/com/bluecolab/watermonitor/
 ├── MainActivity.kt                          # Main activity (Compose host)
 ├── data/
 │   ├── remote/
-│   │   ├── api/BlueColabApi.kt              # Retrofit API interface
-│   │   └── dto/WaterQualityDto.kt           # Data transfer objects
-│   └── repository/WaterQualityRepositoryImpl.kt
+│   │   ├── api/
+│   │   │   ├── BlueColabApi.kt              # BCL sensor API
+│   │   │   ├── UsgsWaterApi.kt              # USGS Instantaneous Values API
+│   │   │   └── UsgsFloodApi.kt              # USGS RTFI Flood Impact API
+│   │   └── dto/
+│   │       ├── WaterQualityDto.kt           # BCL sensor DTOs
+│   │       ├── UsgsInstantaneousDto.kt      # USGS IV response DTOs
+│   │       └── UsgsFloodImpactDto.kt        # USGS RTFI response DTOs
+│   └── repository/
+│       ├── WaterQualityRepositoryImpl.kt
+│       └── FloodDataRepositoryImpl.kt
 ├── di/
 │   ├── NetworkModule.kt                     # Hilt network dependencies
 │   └── RepositoryModule.kt                  # Hilt repository bindings
 ├── domain/
-│   ├── model/WaterQualityReading.kt         # Domain models
-│   ├── repository/WaterQualityRepository.kt # Repository interface
+│   ├── model/
+│   │   ├── WaterQualityReading.kt           # Water quality domain models
+│   │   └── FloodData.kt                     # Flood awareness domain models
+│   ├── repository/
+│   │   ├── WaterQualityRepository.kt
+│   │   └── FloodDataRepository.kt
 │   └── usecase/                             # Business logic use cases
 ├── presentation/
 │   ├── component/                           # Reusable Compose components
-│   ├── screen/home/                         # Home screen + ViewModel
+│   ├── navigation/AppNavigation.kt          # Bottom nav + NavHost
+│   ├── screen/
+│   │   ├── home/                            # Water Quality screen + ViewModel
+│   │   └── flood/                           # Flood Awareness screen + ViewModel
 │   └── theme/                               # Material 3 theme
 └── util/
     ├── Constants.kt                         # App-wide constants
     └── Resource.kt                          # Result wrapper
-
-gradle/libs.versions.toml                    # Version catalog
-build.gradle.kts                             # Project-level build config (Kotlin DSL)
-app/build.gradle.kts                         # App-level build config (Kotlin DSL)
 ```
 
 ---

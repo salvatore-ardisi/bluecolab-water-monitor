@@ -1,6 +1,8 @@
 package com.bluecolab.watermonitor.di
 
+import com.bluecolab.watermonitor.data.repository.FloodDataRepositoryImpl
 import com.bluecolab.watermonitor.data.repository.WaterQualityRepositoryImpl
+import com.bluecolab.watermonitor.domain.repository.FloodDataRepository
 import com.bluecolab.watermonitor.domain.repository.WaterQualityRepository
 import dagger.Binds
 import dagger.Module
@@ -17,4 +19,10 @@ abstract class RepositoryModule {
     abstract fun bindWaterQualityRepository(
         repositoryImpl: WaterQualityRepositoryImpl
     ): WaterQualityRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindFloodDataRepository(
+        repositoryImpl: FloodDataRepositoryImpl
+    ): FloodDataRepository
 }

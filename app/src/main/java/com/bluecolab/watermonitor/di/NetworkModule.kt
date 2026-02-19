@@ -1,6 +1,8 @@
 package com.bluecolab.watermonitor.di
 
 import com.bluecolab.watermonitor.data.remote.api.BlueColabApi
+import com.bluecolab.watermonitor.data.remote.api.UsgsFloodApi
+import com.bluecolab.watermonitor.data.remote.api.UsgsWaterApi
 import com.bluecolab.watermonitor.util.Constants
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -13,6 +15,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -56,5 +59,29 @@ object NetworkModule {
     @Singleton
     fun provideBlueColabApi(retrofit: Retrofit): BlueColabApi {
         return retrofit.create(BlueColabApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    @Named("usgsWater")
+    fun provideUsgsWaterApi(okHttpClient: OkHttpClient, moshi: Moshi): UsgsWaterApi {
+        return Retrofit.Builder()
+            .baseUrl(Constants.USGS_BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .build()
+            .create(UsgsWaterApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    @Named("usgsFlood")
+    fun provideUsgsFloodApi(okHttpClient: OkHttpClient, moshi: Moshi): UsgsFloodApi {
+        return Retrofit.Builder()
+            .baseUrl(Constants.USGS_RTFI_BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .build()
+            .create(UsgsFloodApi::class.java)
     }
 }

@@ -36,6 +36,7 @@ android {
         // Build config fields for API configuration
         buildConfigField("String", "BLUE_COLAB_API_URL", "\"https://colabprod01.pace.edu/api/influx/sensordata\"")
         buildConfigField("String", "USGS_API_URL", "\"https://waterservices.usgs.gov/nwis/iv\"")
+        buildConfigField("String", "USGS_RTFI_API_URL", "\"https://api.waterdata.usgs.gov/rtfi-api/\"")
     }
 
     buildTypes {

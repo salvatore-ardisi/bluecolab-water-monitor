@@ -4,6 +4,7 @@ object Constants {
     // API Configuration
     const val BLUE_COLAB_BASE_URL = "https://colabprod01.pace.edu/api/influx/sensordata/"
     const val USGS_BASE_URL = "https://waterservices.usgs.gov/nwis/"
+    const val USGS_RTFI_BASE_URL = "https://api.waterdata.usgs.gov/rtfi-api/"
 
     // Default measurement station
     const val DEFAULT_MEASUREMENT = "Alan"
