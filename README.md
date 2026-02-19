@@ -241,7 +241,6 @@ For permissions or inquiries, please contact Blue CoLab at Pace University.
 
 If you have questions or need help:
 - [Open an issue](https://github.com/salvatore-ardisi/bluecolab-water-monitor/issues)
-- See [SECURITY_REVIEW.md](SECURITY_REVIEW.md) for security documentation
 
 ---
 

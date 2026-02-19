@@ -354,6 +354,7 @@ temp/
 
 # Add any project-specific files to ignore below
 CLAUDE_CODE_INSTRUCTIONS.md
+SECURITY_REVIEW.md
 .claude/
 
 # =========================================
